@@ -5,16 +5,12 @@ using UnityEngine;
 public class StartSceneManager : MonoBehaviour
 {
     bool enterflag = false;
-    [SerializeField] GameObject launcherObject;
-    LauncherScript launch;
+    [SerializeField] GameObject Menu;
 
-    void Start(){
-        launch = launcherObject.GetComponent<LauncherScript>();
-    }
     void Update(){
         if(!enterflag){
             if(Input.GetKeyDown(KeyCode.Return)){
-                //launch.Connect();
+                Menu.SetActive(true);
                 enterflag = true;
             }
         }

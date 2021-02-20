@@ -24,7 +24,7 @@ public class LauncherScript : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom(){
         Debug.Log("入室しました");
-        PhotonNetwork.LoadLevel("Molcar");//int型だけどいいのかな
+        SceneManager.LoadScene("Race");
     }
 
 }

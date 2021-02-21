@@ -222,6 +222,23 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 702844019}
   m_PrefabAsset: {fileID: 0}
+--- !u!111 &470004099
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470004098}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 241115f5c722349458823a86649624e6, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 241115f5c722349458823a86649624e6, type: 2}
+  - {fileID: 7400000, guid: 0facd29efbffe754bbda43e53d16eed4, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!54 &470004101
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -273,7 +290,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6f6cc2f1be60d014a95e663a49c6bcf3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f6cc2f1be60d014a95e663a49c6bcf3,
         type: 3}

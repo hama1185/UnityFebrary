@@ -37,6 +37,7 @@ public class Movement : MonoBehaviour
 
         if(input.magnitude > 0f){
             //animation起動歩く
+            animator.SetBool("isWalking", true);
             this.transform.LookAt((transform.position + input));
             this.transform.Rotate(new Vector3(0f, -180f, 0f));
             Vector3 objectfoward = transform.forward;
@@ -45,9 +46,10 @@ public class Movement : MonoBehaviour
         }
         else{
             //停止中のアニメをいれる
+            animator.SetBool("isWalking", false);
         }
     }
     //接触判定も入れる
-    
+
 
 }

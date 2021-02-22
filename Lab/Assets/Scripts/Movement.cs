@@ -13,8 +13,8 @@ public class Movement : MonoBehaviour
     public Vector3 acceleration;
 
     public Vector3 velocity;
-    public float walkSpeed = 1.5f;
-    float maxSpeed = 10f;
+    public float walkSpeed = 15f;
+    float maxSpeed = 30f;
     bool isGrounded;
     
 
@@ -47,5 +47,7 @@ public class Movement : MonoBehaviour
             //停止中のアニメをいれる
         }
     }
+    //接触判定も入れる
+    
 
 }

@@ -14,6 +14,7 @@ public class CameraController : MonoBehaviour
         frontCamera = Player.transform.GetChild(2).gameObject;
         backCamera = Player.transform.GetChild(3).gameObject;
 
+        backCamera.SetActive(true);
         frontCamera.SetActive(false);
         upCamera.SetActive(false);
     }

@@ -24,11 +24,9 @@ public class Movement : MonoBehaviour
     }
 
     void FixedUpdate(){
-        Vector3 newPositon;
-        newPositon.x = transform.position.x - velocity.x * Time.fixedDeltaTime;
-        newPositon.y = transform.position.y;
-        newPositon.z = transform.position.z - velocity.z * Time.fixedDeltaTime;
-        rb.MovePosition(newPositon);
+        
+        rb.AddForce(input * 10f,ForceMode.Acceleration);
+        
     }
 
     void Update(){
@@ -39,9 +37,6 @@ public class Movement : MonoBehaviour
             //animation起動歩く
             this.transform.LookAt((transform.position + input));
             this.transform.Rotate(new Vector3(0f, -180f, 0f));
-            Vector3 objectfoward = transform.forward;
-            objectfoward.y += -180f; 
-            velocity += objectfoward * walkSpeed;//+がついてるのは謎
         }
         else{
             //停止中のアニメをいれる

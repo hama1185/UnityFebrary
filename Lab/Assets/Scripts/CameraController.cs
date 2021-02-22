@@ -8,7 +8,8 @@ public class CameraController : MonoBehaviour
     public GameObject frontCamera;
     public GameObject backCamera;
     public GameObject upCamera;
-    void Start(){
+
+    public void setCamera(){
         Player = GameObject.FindWithTag("Player");
         frontCamera = Player.transform.GetChild(2).gameObject;
         backCamera = Player.transform.GetChild(3).gameObject;

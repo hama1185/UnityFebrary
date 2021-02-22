@@ -1,9 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class Movement : MonoBehaviour
 {
+    //オンライン化に必要な部分
+    public PhotonView myPV;
+    public PhotonTransformView myPTV;
+
     [SerializeField]
     Animator animator;
     
@@ -19,11 +25,18 @@ public class Movement : MonoBehaviour
     
 
     void Start(){
+        if(!myPV.IsMine){
+            return;
+        }
         rb = this.GetComponent<Rigidbody>();
 
     }
 
     void FixedUpdate(){
+        if(!myPV.IsMine){
+            return;
+        }
+        
         Vector3 newPositon;
         newPositon.x = transform.position.x - velocity.x * Time.fixedDeltaTime;
         newPositon.y = transform.position.y;
@@ -32,6 +45,10 @@ public class Movement : MonoBehaviour
     }
 
     void Update(){
+        if(!myPV.IsMine){
+            return;
+        }
+
         velocity = Vector3.zero;
         input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 

@@ -14,12 +14,15 @@ public class Movement : MonoBehaviour
     Animator animator;
     
     Vector3 input;
+    float ahead;
+    float rotation;
 
     Rigidbody rb;
     public Vector3 acceleration;
 
     public Vector3 velocity;
     public float walkSpeed = 15f;
+    public float rotateSpeed = 1.0f;
     float maxSpeed = 30f;
     bool isGrounded;
     
@@ -36,11 +39,10 @@ public class Movement : MonoBehaviour
         if(!myPV.IsMine){
             return;
         }
-        
         Vector3 newPositon;
-        newPositon.x = transform.position.x - velocity.x * Time.fixedDeltaTime;
+        newPositon.x = transform.position.x + velocity.x * Time.fixedDeltaTime;
         newPositon.y = transform.position.y;
-        newPositon.z = transform.position.z - velocity.z * Time.fixedDeltaTime;
+        newPositon.z = transform.position.z + velocity.z * Time.fixedDeltaTime;
         rb.MovePosition(newPositon);
     }
 
@@ -50,16 +52,17 @@ public class Movement : MonoBehaviour
         }
 
         velocity = Vector3.zero;
+        ahead = Input.GetAxis("Vertical");
+        rotation = Input.GetAxis("Horizontal");
         input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
         if(input.magnitude > 0f){
             //animation起動歩く
             animator.SetBool("isWalking", true);
-            this.transform.LookAt((transform.position + input));
-            this.transform.Rotate(new Vector3(0f, -180f, 0f));
-            Vector3 objectfoward = transform.forward;
-            objectfoward.y += -180f; 
-            velocity += objectfoward * walkSpeed;//+がついてるのは謎
+            this.transform.Rotate(new Vector3(0f, rotation * rotateSpeed, 0f));
+            Vector3 objectfoward = Quaternion.Euler(0f, 180f, 0f) * transform.forward;
+
+            velocity = ahead * objectfoward * walkSpeed;//+がついてるのは謎
         }
         else{
             //停止中のアニメをいれる

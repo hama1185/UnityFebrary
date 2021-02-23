@@ -541,7 +541,6 @@ MonoBehaviour:
   animator: {fileID: 52443069739088401}
   acceleration: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
-  walkSpeed: 10
 --- !u!114 &52443069739088412
 MonoBehaviour:
   m_ObjectHideFlags: 0

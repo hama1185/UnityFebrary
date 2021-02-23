@@ -69,7 +69,18 @@ public class Movement : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
     }
-    //接触判定も入れる
+    void OnCollisionStay(Collision collision){
+        if(collision.gameObject.name == "Wall(Clone)"){
+            rb.constraints = RigidbodyConstraints.FreezePositionY
+            | RigidbodyConstraints.FreezeRotationX
+            | RigidbodyConstraints.FreezeRotationZ;
+        }
+    }
 
+    void OnCollisionExit(Collision collision){
+        if(collision.gameObject.name == "Wall(Clone)"){
+            rb.constraints = RigidbodyConstraints.None;
+        }
+    }
 
 }

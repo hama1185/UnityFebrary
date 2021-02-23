@@ -5,6 +5,7 @@ using UnityEngine;
 public class StartButtonManager : MonoBehaviour
 {
     [SerializeField] GameObject launcherObject;
+    [SerializeField] GameObject processingBar;
     LauncherScript launch;
     bool connectFlag = false;
     void Start(){
@@ -14,6 +15,7 @@ public class StartButtonManager : MonoBehaviour
         if(!connectFlag){
             launch.Connect();
             connectFlag = true;
+            processingBar.SetActive(true);
         }
     }
 }

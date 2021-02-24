@@ -70,7 +70,8 @@ public class Movement : MonoBehaviour
         }
     }
     void OnCollisionStay(Collision collision){
-        if(collision.gameObject.name == "Wall(Clone)"){
+        if(collision.gameObject.name == "Wall(Clone)" 
+        || collision.gameObject.tag == "OtherPlayer"){
             rb.constraints = RigidbodyConstraints.FreezePositionY
             | RigidbodyConstraints.FreezeRotationX
             | RigidbodyConstraints.FreezeRotationZ;
@@ -78,7 +79,8 @@ public class Movement : MonoBehaviour
     }
 
     void OnCollisionExit(Collision collision){
-        if(collision.gameObject.name == "Wall(Clone)"){
+        if(collision.gameObject.name == "Wall(Clone)" 
+        || collision.gameObject.tag == "OtherPlayer"){
             rb.constraints = RigidbodyConstraints.None;
         }
     }

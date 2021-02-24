@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7084038036660837218}
   - component: {fileID: 5596666744114200174}
   m_Layer: 0
-  m_Name: carrotColor
+  m_Name: carrotRigit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4713636112059748411}
   m_LocalRotation: {x: 0.00000007499356, y: 0.99904823, z: -0.043619365, w: -0.00000007884411}
-  m_LocalPosition: {x: 0, y: 1, z: -8}
+  m_LocalPosition: {x: 0, y: 8, z: -8}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -93,7 +93,7 @@ MeshCollider:
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 30
+  m_CookingOptions: -1
   m_Mesh: {fileID: 4970989848755135003, guid: 63effd73648cf384d9967c30c78a2f91, type: 3}
 --- !u!54 &5596666744114200174
 Rigidbody:

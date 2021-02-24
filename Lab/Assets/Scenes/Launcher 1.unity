@@ -2595,6 +2595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Menu: {fileID: 0}
+  Under: {fileID: 0}
 --- !u!4 &1605978241
 Transform:
   m_ObjectHideFlags: 0
@@ -2621,7 +2622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98505200ff3f4544a002459f84a7526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newInput: {fileID: 0}
+  nameInput: {fileID: 0}
 --- !u!114 &1605978244
 MonoBehaviour:
   m_ObjectHideFlags: 0

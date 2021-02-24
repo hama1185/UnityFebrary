@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class GoButtonManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] GameObject launcherObject;
+    [SerializeField] GameObject processingBar;
+    LauncherScript launch;
+    bool connectFlag = false;
+    void Start(){
+        launch = launcherObject.GetComponent<LauncherScript>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void OnClick(){
-        Debug.Log(SelectViewScript.selectCharactor);
+    public void OnClickGoButton(){
+        if(!connectFlag){
+            launch.Connect();
+            connectFlag = true;
+            processingBar.SetActive(true);
+        }
     }
 }

@@ -720,7 +720,7 @@ MonoBehaviour:
   animator: {fileID: 3407705449023123345}
   acceleration: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
-  walkSpeed: 15
+  walkSpeed: 10
   rotateSpeed: 1
 --- !u!1 &2669342807137502218
 GameObject:

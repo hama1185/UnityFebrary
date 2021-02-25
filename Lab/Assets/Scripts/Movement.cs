@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UniRx;
 
 public class Movement : MonoBehaviour
 {
@@ -21,9 +23,10 @@ public class Movement : MonoBehaviour
     public Vector3 acceleration;
 
     public Vector3 velocity;
-    public float walkSpeed = 15f;
+    public float walkSpeed = 10f;
     public float rotateSpeed = 1.0f;
-    float maxSpeed = 30f;
+    float baseSpeed = 10f;
+    float maxSpeed = 20f;
     bool isGrounded;
     
 
@@ -69,15 +72,23 @@ public class Movement : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
     }
-    void DeleteGameObject(GameObject obj){
+    void ResetRigidbody(){
+        rb.constraints = RigidbodyConstraints.None;
+    }
 
+    void ResetWalkSpeed(){
+        walkSpeed = baseSpeed;
     }
 
     void OnCollisionEnter(Collision collision){
         if(collision.gameObject.tag == "Food"){
             rb.constraints = RigidbodyConstraints.FreezeAll;
-            //5秒後に
+            //3秒後に
+            Destroy(collision.gameObject, 3f);
+            Observable.Timer(TimeSpan.FromMilliseconds(3100)).Subscribe(_ => ResetRigidbody());
             //速度の変更
+            walkSpeed = maxSpeed;
+            Observable.Timer(TimeSpan.FromMinutes(1.5f)).Subscribe(_ => ResetWalkSpeed());
         }
     }
     void OnCollisionStay(Collision collision){
@@ -86,6 +97,9 @@ public class Movement : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezePositionY
             | RigidbodyConstraints.FreezeRotationX
             | RigidbodyConstraints.FreezeRotationZ;
+        }
+        if(collision.gameObject.tag == "Food"){
+            rb.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 

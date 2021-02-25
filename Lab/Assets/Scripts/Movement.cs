@@ -69,6 +69,17 @@ public class Movement : MonoBehaviour
             animator.SetBool("isWalking", false);
         }
     }
+    void DeleteGameObject(GameObject obj){
+
+    }
+
+    void OnCollisionEnter(Collision collision){
+        if(collision.gameObject.tag == "Food"){
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            //5秒後に
+            //速度の変更
+        }
+    }
     void OnCollisionStay(Collision collision){
         if(collision.gameObject.name == "Wall(Clone)" 
         || collision.gameObject.tag == "OtherPlayer"){
@@ -80,7 +91,8 @@ public class Movement : MonoBehaviour
 
     void OnCollisionExit(Collision collision){
         if(collision.gameObject.name == "Wall(Clone)" 
-        || collision.gameObject.tag == "OtherPlayer"){
+        || (collision.gameObject.tag == "OtherPlayer"
+        || collision.gameObject.tag == "Food")){
             rb.constraints = RigidbodyConstraints.None;
         }
     }

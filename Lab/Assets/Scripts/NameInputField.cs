@@ -31,6 +31,5 @@ public class NameInputField : MonoBehaviourPunCallbacks
     public void SetPlayerName(){
         PhotonNetwork.NickName = nameText.text + " ";
         PlayerPrefs.SetString(playerNamePrefKey, nameText.text);
-        Debug.Log(PhotonNetwork.NickName);
     }
 }

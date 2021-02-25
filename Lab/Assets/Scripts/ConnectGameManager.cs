@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 
 public class ConnectGameManager : MonoBehaviourPunCallbacks
 {
@@ -35,7 +36,7 @@ public class ConnectGameManager : MonoBehaviourPunCallbacks
 
         Movement movement = player.GetComponent<Movement>();
         movement.enabled = true;
-        
+
         cameraController.setCamera();
     }
     

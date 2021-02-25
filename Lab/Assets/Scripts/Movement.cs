@@ -15,8 +15,6 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     Animator animator;
-    // [SerializeField]
-    // GameObject carrot;
     
     Vector3 input;
     float ahead;
@@ -108,7 +106,7 @@ public class Movement : MonoBehaviour
             Observable.Timer(TimeSpan.FromMilliseconds(3100)).Subscribe(_ => ResetRigidbody());
             //速度の変更
             walkSpeed = maxSpeed;
-            Observable.Timer(TimeSpan.FromMinutes(1.5f)).Subscribe(_ => ResetWalkSpeed());
+            Observable.Timer(TimeSpan.FromMinutes(1.0f)).Subscribe(_ => ResetWalkSpeed());
         }
     }
     void OnCollisionStay(Collision collision){

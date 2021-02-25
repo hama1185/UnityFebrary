@@ -36,9 +36,6 @@ public class ConnectGameManager : MonoBehaviourPunCallbacks
 
         Movement movement = player.GetComponent<Movement>();
         movement.enabled = true;
-        var Text = player.transform.GetChild(4).GetComponent<TMP_Text>();
-        
-        Text.text = PhotonNetwork.NickName;
 
         cameraController.setCamera();
     }

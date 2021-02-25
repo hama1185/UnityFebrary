@@ -5,6 +5,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UniRx;
+using UniRx.Triggers;
 
 public class Movement : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     Animator animator;
+    // [SerializeField]
+    // GameObject carrot;
     
     Vector3 input;
     float ahead;
@@ -23,11 +26,12 @@ public class Movement : MonoBehaviour
     public Vector3 acceleration;
 
     public Vector3 velocity;
-    public float walkSpeed = 10f;
+    public float walkSpeed = 15f;
     public float rotateSpeed = 1.0f;
-    float baseSpeed = 10f;
+    float baseSpeed = 15f;
     float maxSpeed = 20f;
     bool isGrounded;
+    bool carrotFlag = false;
     
 
     void Start(){
@@ -35,7 +39,6 @@ public class Movement : MonoBehaviour
             return;
         }
         rb = this.GetComponent<Rigidbody>();
-
     }
 
     void FixedUpdate(){
@@ -71,6 +74,18 @@ public class Movement : MonoBehaviour
             //停止中のアニメをいれる
             animator.SetBool("isWalking", false);
         }
+
+        //ニンジンの生成
+        if(Input.GetKeyUp(KeyCode.Space)){
+            Vector3 targetPositon;
+            targetPositon.x = transform.position.x;
+            targetPositon.y = transform.position.y + 10f;
+            targetPositon.z = transform.position.z;
+            if(!carrotFlag){
+                PhotonNetwork.Instantiate("carrotRigit", targetPositon, Quaternion.identity, 0);
+                carrotFlag = true;
+            }
+        }
     }
     void ResetRigidbody(){
         rb.constraints = RigidbodyConstraints.None;
@@ -84,11 +99,17 @@ public class Movement : MonoBehaviour
         if(collision.gameObject.tag == "Food"){
             rb.constraints = RigidbodyConstraints.FreezeAll;
             //3秒後に
-            Destroy(collision.gameObject, 3f);
+            try{
+                Observable.Timer(TimeSpan.FromMilliseconds(3000)
+            ).Subscribe(_ => PhotonNetwork.Destroy(collision.gameObject));
+            }catch(MissingReferenceException){}
+            
             Observable.Timer(TimeSpan.FromMilliseconds(3100)).Subscribe(_ => ResetRigidbody());
             //速度の変更
             walkSpeed = maxSpeed;
             Observable.Timer(TimeSpan.FromMinutes(1.5f)).Subscribe(_ => ResetWalkSpeed());
+
+            carrotFlag = false;
         }
     }
     void OnCollisionStay(Collision collision){

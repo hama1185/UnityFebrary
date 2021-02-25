@@ -93,26 +93,28 @@ public class Movement : MonoBehaviour
 
     void ResetWalkSpeed(){
         walkSpeed = baseSpeed;
+        //生成できるようにした
+        carrotFlag = false;
     }
 
     void OnCollisionEnter(Collision collision){
+        if(!myPV.IsMine){
+            return;
+        }
         if(collision.gameObject.tag == "Food"){
             rb.constraints = RigidbodyConstraints.FreezeAll;
-            //3秒後に
-            try{
-                Observable.Timer(TimeSpan.FromMilliseconds(3000)
-            ).Subscribe(_ => PhotonNetwork.Destroy(collision.gameObject));
-            }catch(MissingReferenceException){}
-            
+            // Observable.Timer(TimeSpan.FromMilliseconds(1000)).Subscribe(_ => 
+            // PhotonNetwork.Destroy(collision.gameObject));
             Observable.Timer(TimeSpan.FromMilliseconds(3100)).Subscribe(_ => ResetRigidbody());
             //速度の変更
             walkSpeed = maxSpeed;
             Observable.Timer(TimeSpan.FromMinutes(1.5f)).Subscribe(_ => ResetWalkSpeed());
-
-            carrotFlag = false;
         }
     }
     void OnCollisionStay(Collision collision){
+        if(!myPV.IsMine){
+            return;
+        }
         if(collision.gameObject.name == "Wall(Clone)" 
         || collision.gameObject.tag == "OtherPlayer"){
             rb.constraints = RigidbodyConstraints.FreezePositionY
@@ -125,9 +127,11 @@ public class Movement : MonoBehaviour
     }
 
     void OnCollisionExit(Collision collision){
+        if(!myPV.IsMine){
+            return;
+        }
         if(collision.gameObject.name == "Wall(Clone)" 
-        || (collision.gameObject.tag == "OtherPlayer"
-        || collision.gameObject.tag == "Food")){
+        || collision.gameObject.tag == "OtherPlayer"){
             rb.constraints = RigidbodyConstraints.None;
         }
     }

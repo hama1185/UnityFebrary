@@ -779,7 +779,7 @@ namespace Photon.Pun
             go.GetComponentsInChildren<PhotonView>(true, foundPVs);
             if (foundPVs.Count <= 0)
             {
-                //Debug.LogError("Failed to 'network-remove' GameObject because has no PhotonView components: " + go);
+                Debug.LogError("Failed to 'network-remove' GameObject because has no PhotonView components: " + go);
                 return;
             }
 

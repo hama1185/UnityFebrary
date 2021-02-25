@@ -539,7 +539,6 @@ MonoBehaviour:
   myPV: {fileID: 52443069739088412}
   myPTV: {fileID: 52443069739088413}
   animator: {fileID: 52443069739088401}
-  carrot: {fileID: 8052685400969944658, guid: e9961a96455a9b54e9a4ebc878599be9, type: 3}
   acceleration: {x: 0, y: 0, z: 0}
   velocity: {x: 0, y: 0, z: 0}
   walkSpeed: 15

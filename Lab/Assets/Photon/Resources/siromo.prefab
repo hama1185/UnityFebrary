@@ -235,6 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6613067113561373256}
   - component: {fileID: 5401489808043315733}
+  - component: {fileID: 3722000781173615611}
   m_Layer: 0
   m_Name: MolBody
   m_TagString: Untagged
@@ -349,6 +350,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.11494116, z: 0.10310008}
     m_Extent: {x: 0.13607994, y: 0.14847459, z: 0.21310352}
   m_DirtyAABB: 0
+--- !u!64 &3722000781173615611
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820047724209816546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6471197594667803179, guid: 773458dce508ba94cbe35cda15107319, type: 3}
 --- !u!1 &1829025007458922897
 GameObject:
   m_ObjectHideFlags: 0

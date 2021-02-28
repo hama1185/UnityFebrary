@@ -29,8 +29,11 @@ public class CarrotMovement : MonoBehaviour
         }
         if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "OtherPlayer"){
             try{
-                Observable.Timer(TimeSpan.FromMilliseconds(500)).Subscribe(_ => PhotonNetwork.Destroy(this.gameObject));
-            }catch(MissingReferenceException){}
+                PhotonNetwork.Destroy(this.gameObject);
+                //Observable.Timer(TimeSpan.FromMilliseconds(400)).Subscribe(_ => PhotonNetwork.Destroy(this.gameObject));
+            }catch(MissingReferenceException){
+                Debug.Log("miss 省略");
+            }
         }
     }
 }
